@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block body %}
 <div>
@@ -17,4 +17,5 @@
     <label for="add">Click for this button to add quastion</label> <br>
     <form act="/addanswer" method="POST"><input type='submit' name='add' value='Add'></form>
     </div>
+{% endblock %}
 

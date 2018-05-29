@@ -10,21 +10,13 @@ def import_data_from_file(file_name):
         return list_of_dict
 
 
-def export_data_to_file(file_name):
-    with open(file_name, 'r') as csv_file:
-        csv_reader=csv.DictReader(csv_file)
-        with open(file_name, 'w') as new_file:
-            fieldnames = create_list_of_headers(list)
-            csv_writer = csv.DictWriter(new_file, fieldnames=fieldnames, delimiter=',')
-            csv_writer.writeheader()
+def export_data_to_file(path, data):
+    with open(path, 'w') as csv_file:
+        writer = csv.writer(csv_file, delimeter='_')
+            for line in data:
+                writer.writerow(line)
             
-            for line in csv
+        
+    return
+            
 
-with open('new_test.csv', 'w') as new_file:
-        fieldnames = ['Stock','Price','Quantity']
-        csv_writer = csv.DictWriter(new_file, fieldnames=fieldnames,delimiter=',')
-
-        csv_writer.writeheader()
-
-        for line in csv_reader:
-            csv_writer.writerow(line)
