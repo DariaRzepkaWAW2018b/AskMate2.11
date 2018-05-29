@@ -1,5 +1,15 @@
 import csv
 
+def import_headers_from_file(file_name):
+    with open(file_name, 'r') as csv_file:
+        csv_reader=csv.reader(csv_file)
+
+        for line in csv_reader:
+            return line
+
+
+
+
 def import_data_from_file(file_name):
     list_of_dict = []
     with open(file_name, 'r') as csv_file:

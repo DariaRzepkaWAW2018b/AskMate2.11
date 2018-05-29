@@ -6,8 +6,9 @@ app=Flask(__name__)
 @app.route("/")
 @app.route('/list', methods=["POST", "GET"])
 def index():
+    list_of_headers=persistence.import_headers_from_file("sample_data/question.csv")
     list_of_dictionaries = persistence.import_data_from_file("sample_data/question.csv")
-    return render_template("list_of_question.html", list_of_dictionaries=list_of_dictionaries)
+    return render_template("list_of_question.html", list_of_dictionaries=list_of_dictionaries, list_of_headers=list_of_headers)
 
 @app.route("/addanswer")
 def addanswer():
