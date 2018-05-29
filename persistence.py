@@ -18,7 +18,7 @@ def export_data_to_file(file_name):
             csv_writer = csv.DictWriter(new_file, fieldnames=fieldnames, delimiter=',')
             csv_writer.writeheader()
             
-            for line in csv
+
 
 with open('new_test.csv', 'w') as new_file:
         fieldnames = ['Stock','Price','Quantity']
@@ -26,5 +26,5 @@ with open('new_test.csv', 'w') as new_file:
 
         csv_writer.writeheader()
 
-        for line in csv_reader:
-            csv_writer.writerow(line)
+        #for line in csv_reader:
+         #   csv_writer.writerow(line)

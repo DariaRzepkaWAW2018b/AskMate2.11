@@ -1,11 +1,13 @@
 from flask import Flask, request, render_template
+import persistence
 
 app=Flask(__name__)
 
 @app.route("/")
 @app.route('/list', methods=["POST", "GET"])
 def index():
-    return render_template("list_of_question.html")
+    table = persistence.import_data_from_file("sample_data/question.csv")
+    return render_template("list_of_question.html",list_of_headers=table)
 
 @app.route("/addanswer")
 def addanswer():

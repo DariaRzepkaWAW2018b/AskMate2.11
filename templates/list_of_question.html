@@ -7,6 +7,7 @@
     <table border='4'>
         <tr>{% for elem in list_of_headers %}
             <td>{{ elem }}</td>
+            {%endfor%}
         </tr>
         <tr>{% for key, value in list_of_dictionaries %}
         <td>{{value}}</td>
@@ -15,6 +16,6 @@
         <td><form action="/show_single_question" method="POST"><input type='submit' name = 'view' value='View'></form></td></tr>
     </table> <br>
     <label for="add">Click for this button to add quastion</label> <br>
-    <form act="/addanswer" method="POST"><input type='submit' name='add' value='Add'></form>
+    <form action="/addquestion" method="POST"><input type='submit' name='add' value='Add'></form>
     </div>
-
+{% endblock %} 
