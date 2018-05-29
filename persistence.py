@@ -13,10 +13,9 @@ def import_data_from_file(file_name):
 def export_data_to_file(path, data):
     with open(path, 'w') as csv_file:
         writer = csv.writer(csv_file, delimeter='_')
-            for line in data:
-                writer.writerow(line)
+        for line in data:
+            writer.writerow(line)
             
         
     return
             
-

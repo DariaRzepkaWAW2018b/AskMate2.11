@@ -5,17 +5,39 @@
     <h1>Welcome to Ask Mate</h1>
 
     <table border='4'>
-        <tr>{% for elem in list_of_headers %}
-            <td>{{ elem }}</td>
+        <tr>
+            {% for elem in list_of_headers %}
+            <td>
+                {{ elem }}
+            </td>
+            {%endfor%}
         </tr>
-        <tr>{% for key, value in list_of_dictionaries %}
-        <td>{{value}}</td>
-        {% endfor %}
-        <td><form action="/do_delete" method="POST"><input type='submit' name = 'delete' value='Delete'></form></td> 
-        <td><form action="/show_single_question" method="POST"><input type='submit' name = 'view' value='View'></form></td></tr>
+        <tr>
+            {% for dictionaries in list_of_dictionaries %}
+                {% for key, value in dictionaries.items() %}
+                    <td>
+                        {{value}}
+                    </td>
+                {% endfor %}
+                <td>
+                        <form action="/do_delete" method="POST">
+                            <input type='submit' name = 'delete' value='Delete'>
+                        </form>
+                    </td> 
+                    <td>
+                        <form action="/show_single_question" method="POST">
+                            <input type='submit' name = 'view' value='View'>
+                        </form>
+                    </td>
+        </tr>
+            {% endfor %}
     </table> <br>
-    <label for="add">Click for this button to add quastion</label> <br>
-    <form act="/addanswer" method="POST"><input type='submit' name='add' value='Add'></form>
+    <label for="add">Click for this button to add question</label> <br>
+    <form action="/addquestion" method="POST">
+        <input type='submit' name='add' value='Add'>
+    </form>
     </div>
-{% endblock %}
 
+
+    
+{% endblock %} 

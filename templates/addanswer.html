@@ -4,35 +4,53 @@
     <meta charset="utf-8"/>
 </head>
 <style>
+    #welcome{
+        font-size: 32px;
+        width: 998px;
+        height: 50px;
+        background-color: lightgrey; 
+        text-align: center; 
+        padding-top: 10px;
+    }
     #container{
-        width: 1000px;
+        width: 990px;
         margin-left: auto;
         margin-right: auto;
     }
     #rectangle{
-        width: 822px;
-        background-color: red;
-    }
+        width: 998px;
+        }
     #add{
         float: right;
+    }
+    button{
+        height: 30px;
+        width: 75px;
+    }
+    #paragraph{
+        margin-top: 20px;
     }
 </style>
 <body>
     <div id='container'>
-        <div id='welcome'>Welcome to askmate</div>
-        <div id='paragraph'>Please fill the form</div>
-        <div class='area'>
-            <textarea rows='10' cols='100'></textarea>
-        </div>
-        <div id='rectangle'>
-            <div id='back'><button>back</button>
-            <button style="float: right">add</button></div>
-        </div>
+        <div id='welcome'>Welcome to AskMate</div>
+        <div id='paragraph'>Please fill the form</div>    
+            <div class='area'>
+                <form action='/questions/<question_id>/' method="GET">
+                <textarea rows='10' cols='122'></textarea>
+            </div>
+            <div id='rectangle'>
+                <div id='add'><button type="submit"; value="submit">add</button></div></form>
+        <form action='/list'>
+            <div id='back'><button>back</button></div>
+            <div style="clear:both"></div>
+        </form>
+            </div>
         
         </div>
         
             
-        </div>
+    </div>
     
    
 
