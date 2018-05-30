@@ -10,13 +10,17 @@ def index():
     list_of_dictionaries = persistence.import_data_from_file("sample_data/question.csv")
     return render_template("list_of_question.html", list_of_dictionaries=list_of_dictionaries, list_of_headers=list_of_headers)
 
-@app.route("/addanswer")
+@app.route("/addanswer", methods=["POST"])
 def addanswer():
    return render_template("addanswer.html")
 
-@app.route("/addquestion", methods=['POST'])
+@app.route("/addquestion", methods=['POST','GET'])
 def addquestion():
-    return render_template('addquestion.html')
+    if request.method == "POST":
+        return render_template('addquestion.html')
+    elif request.method == "GET":
+        return redirect('/')
+
 
 if __name__ == "__main__":
     app.run(debug=True,
