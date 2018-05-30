@@ -21,6 +21,16 @@ def addquestion():
     elif request.method == "GET":
         return redirect('/')
 
+@app.route("/question/<question_id>/delete", methods=['GET', 'POST'])
+def delete_question(question_id):
+    logic.delete_by_id("q", question_id)
+    return redirect('/')
+
+@app.route("/answer/<answer_id>/delete", methods=['GET', 'POST'])
+def delete_answer(answer_id):
+    logic.delete_by_id("a", question_id)
+    return redirect('/')
+
 
 if __name__ == "__main__":
     app.run(debug=True,
