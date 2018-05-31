@@ -27,8 +27,9 @@ def addquestion():
 def question(id, slug=None):
     id = str(id)
     title_q = logic.find_by_id_q(id)
-    title_a = logic.find_by_id_a(id)
-    return render_template("question.html", title_q = title_q, title_a = title_a)
+    list_of_dictionaries = logic.find_by_id_a(id)
+    list_of_answer_headers = persistence.import_headers_from_file("sample_data/answer.csv")
+    return render_template("single_question.html", title_q = title_q, list_of_dictionaries = list_of_dictionaries, list_of_answer_headers=list_of_answer_headers)
 
 @app.route("/question/<question_id>/delete", methods=['GET', 'POST'])
 def delete_question(question_id):
