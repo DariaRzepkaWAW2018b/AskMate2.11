@@ -1,4 +1,5 @@
 import persistence
+import itertools
 
 def find_by_id_q(id):
     list = persistence.import_data_from_file("sample_data/question.csv")
@@ -62,5 +63,9 @@ def create_new_id(qa, _question_id= None):
     new_id= int(max(_id))
     return new_id +1
 
-
-
+def create_dict(list_of_data):
+    header = persistence.import_headers_from_file('sample_data/question.csv')
+    new_post={}
+    post=[]
+    new_post = dict(itertools.zip_longest(header, list_of_data, fillvalue=None))
+    return new_post
