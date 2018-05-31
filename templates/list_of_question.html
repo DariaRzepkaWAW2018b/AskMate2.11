@@ -5,19 +5,30 @@
     <h1>Welcome to Ask Mate</h1>
 
     <table border='4'>
-        <tr>
-            {% for elem in list_of_headers %}
-            <td>
-                {{ elem }}
-            </td>
-            {%endfor%}
-        </tr>
-        <tr>
-            {% for dictionaries in list_of_dictionaries %}
-                {% for key, value in dictionaries.items() %}
+        <div>
+            <tr>
+                {% for elem in list_of_headers %}
                     <td>
-                        {{value}}
+                        {{ elem }}
                     </td>
+            
+                {% endfor %}
+            </tr>
+        </div>
+
+        <div>
+            {% for dictionaries in list_of_dictionaries %} <tr>
+                   
+                
+                {% for key in list_of_headers %}
+                    <td>{% if key is in dictionaries %} 
+                   
+                    
+                       {{dictionaries[key]}}
+                    
+                 
+                    {% endif %}</td>
+                
                 {% endfor %}
                 <td>
                         <form action="/do_delete" method="POST">
@@ -29,8 +40,10 @@
                             <input type='submit' name = 'view' value='View'>
                         </form>
                     </td>
-        </tr>
-            {% endfor %}
+            
+            {% endfor %}</tr>
+                
+        </div>
     </table> <br>
     <label for="add">Click for this button to add question</label> <br>
     <form action="/addquestion" method="POST">
@@ -38,6 +51,5 @@
     </form>
     </div>
 
-
-    
+ 
 {% endblock %} 
