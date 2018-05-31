@@ -27,17 +27,20 @@
                     
                        {{dictionaries[key]}}
                     
-                 
-                    {% endif %}</td>
+                        {% endif %}</td>
                 
                 {% endfor %}
-                <td>
-                        <form action="/do_delete" method="POST">
+                
+                {% set id = dictionaries['id'] %}
+                
+                        
+                    <td>
+                        <form action="/do_delete/{{id}}" method="POST">
                             <input type='submit' name = 'delete' value='Delete'>
                         </form>
                     </td> 
                     <td>
-                        <form action="/question" method="POST">
+                        <form action="/show_single_question/{{ id }}" method="POST">
                             <input type='submit' name = 'view' value='View'>
                         </form>
                     </td>
