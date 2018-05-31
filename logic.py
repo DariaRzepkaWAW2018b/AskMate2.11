@@ -10,11 +10,13 @@ def find_by_id_q(id):
 
 def find_by_id_a(id):
     list = persistence.import_data_from_file("sample_data/answer.csv")
+    arr =[]
     for item in list:
-        id_s = item.get("id")
+        id_s = item.get("question_id")
         if id_s == id:
             title_s = item.get("message")
-            return title_s
+            arr.append(title_s)
+    return(arr)
 
 def delete_by_id(qa, id):
     '''
