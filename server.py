@@ -22,12 +22,13 @@ def addquestion():
     elif request.method == "GET":
         return redirect('/')
 
-@app.route("/question/<int:id>", methods=["POST"])
-@app.route("/question/<int:id>/<slug>", methods=["POST"])
+@app.route("/question/<int:id>", methods=["POST","GET"])
+@app.route("/question/<int:id>/<slug>", methods=["POST","GET"])
 def question(id, slug=None):
     id = str(id)
-    title = logic.find_by_id(id)
-    return render_template("question.html", title = title)
+    title_q = logic.find_by_id_q(id)
+    title_a = logic.find_by_id_a(id)
+    return render_template("question.html", title_q = title_q, title_a = title_a)
 
 @app.route("/question/<question_id>/delete", methods=['GET', 'POST'])
 def delete_question(question_id):
