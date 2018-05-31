@@ -24,9 +24,8 @@ def addquestion():
         return redirect('/')
 
 @app.route("/question", methods=["POST"])
-def question():
-    item = logic.find_by_id(id)
-    return render_template("question.html", item = item)
+def question(id):
+    return render_template("question.")
 
 @app.route("/question/<question_id>/delete", methods=['GET', 'POST'])
 def delete_question(question_id):

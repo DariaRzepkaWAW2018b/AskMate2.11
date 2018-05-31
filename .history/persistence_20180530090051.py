@@ -1,6 +1,5 @@
 import csv
 
-
 def import_headers_from_file(file_name):
     with open(file_name, 'r') as csv_file:
         csv_reader=csv.reader(csv_file)
@@ -19,8 +18,6 @@ def import_data_from_file(file_name):
         for row in csv_reader:
             list_of_dict.append(row)
         return list_of_dict
-
-
 
 
 def export_data_to_file(path, data):

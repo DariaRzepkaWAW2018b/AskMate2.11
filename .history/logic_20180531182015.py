@@ -1,12 +1,13 @@
 import persistence
 
-def find_by_id(id):
-    id="1"
-    list = persistence.import_data_from_file("sample_data/question.csv")
-    for item in list:
-        id_s = item.get("id")
-        if id_s == id:
-            return item 
+# def find_by_id(id):
+#     num_id = 1
+#     list = persistence.import_data_from_file("sample_data/question.csv")
+#     for item in list:
+#         id_s = item.get("id")
+#         num_id += num_id
+#         if id_s == id:
+#             return item ,num_id
 
 def delete_by_id(qa, id):
     '''

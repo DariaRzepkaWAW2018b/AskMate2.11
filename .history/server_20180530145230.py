@@ -5,12 +5,17 @@ import logic
 app=Flask(__name__)
 
 @app.route("/")
+
+@app.route("/question/<question_id>", methods= ["GET","POST"])
+def view_question(question_id)
+    return redirect("/question/<question_id>")
+
 @app.route('/list', methods=["POST", "GET"])
 def index():
-    item = logic.find_by_id(id)
+    # find_by_id = logic.find_by_id(id)
     list_of_headers=persistence.import_headers_from_file("sample_data/question.csv")
     list_of_dictionaries = persistence.import_data_from_file("sample_data/question.csv")
-    return render_template("list_of_question.html", list_of_dictionaries=list_of_dictionaries, list_of_headers=list_of_headers, item = item)
+    return render_template("list_of_question.html", list_of_dictionaries=list_of_dictionaries, list_of_headers=list_of_headers)
 
 @app.route("/addanswer", methods=["POST"])
 def addanswer():
@@ -22,11 +27,6 @@ def addquestion():
         return render_template('addquestion.html')
     elif request.method == "GET":
         return redirect('/')
-
-@app.route("/question", methods=["POST"])
-def question():
-    item = logic.find_by_id(id)
-    return render_template("question.html", item = item)
 
 @app.route("/question/<question_id>/delete", methods=['GET', 'POST'])
 def delete_question(question_id):
@@ -41,4 +41,4 @@ def delete_answer(answer_id):
 
 if __name__ == "__main__":
     app.run(debug=True,
-            port = 5001)
+            port = 5000)

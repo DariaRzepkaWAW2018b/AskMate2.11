@@ -8,7 +8,7 @@
         <div>
             <tr>
                 {% for elem in list_of_headers %}
-                
+                    {{}}
                     <td>
                         {{ elem }}
                     </td>
@@ -37,7 +37,7 @@
                         </form>
                     </td> 
                     <td>
-                        <form action="/question" method="POST">
+                        <form action="/question/<num_id>" method="POST">
                             <input type='submit' name = 'view' value='View'>
                         </form>
                     </td>

@@ -1,5 +1,10 @@
 import csv
 
+# def find_by_id(id):
+#     for item in list_of_dict:
+#         id_s = item.get("id")
+#         if id_s == id:
+#             return item
 
 def import_headers_from_file(file_name):
     with open(file_name, 'r') as csv_file:

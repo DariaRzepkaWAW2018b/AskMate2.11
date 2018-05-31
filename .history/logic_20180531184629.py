@@ -1,7 +1,6 @@
 import persistence
 
 def find_by_id(id):
-    id="1"
     list = persistence.import_data_from_file("sample_data/question.csv")
     for item in list:
         id_s = item.get("id")
