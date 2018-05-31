@@ -5,18 +5,18 @@ def find_by_id_q(id):
     for item in list:
         id_s = item.get("id")
         if id_s == id:
-            title_s = item.get(" title")
+            title_s = item.get("title")
             return title_s
 
 def find_by_id_a(id):
-    list = persistence.import_data_from_file("sample_data/answer.csv")
-    arr =[]
-    for item in list:
+    list_of_answer = persistence.import_data_from_file("sample_data/answer.csv")
+    list_of_dictionaries =[]
+    for item in list_of_answer:
         id_s = item.get("question_id")
-        if id_s == id:
-            title_s = item.get("message")
-            arr.append(title_s)
-    return(arr)
+        if item['question_id'] == id_s:
+            list_of_dictionaries.append(item)
+    return list_of_dictionaries
+    
 
 def delete_by_id(qa, id):
     '''
