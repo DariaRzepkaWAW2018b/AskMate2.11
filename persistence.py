@@ -1,5 +1,5 @@
 import csv
-
+import time
 
 def import_headers_from_file(file_name):
     with open(file_name, 'r') as csv_file:
@@ -17,9 +17,10 @@ def import_data_from_file(file_name):
         csv_reader=csv.DictReader(csv_file)
 
         for row in csv_reader:
+            a = float(row[" submisson_time"])
+            row[" submisson_time"] = time.ctime(a)
             list_of_dict.append(row)
         return list_of_dict
-
 
 
 def export_data_to_file(path, data):
