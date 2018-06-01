@@ -82,4 +82,15 @@ def add_question(new_title, new_question):
     post ['id'] = create_new_id('q')
     return post
 
+def add_answer(question_id, new_title, new_answer):
+    header = persistence.import_headers_from_file('sample_data/answer.csv')
+    post= {}
+    for item in header:
+        post[item] = 0
+    post['title']= new_title
+    post[' message']= new_answer
+    post ["submisson_time"] = time.ctime()
+    post ['id'] = create_new_id('a', question_id)
+    post ['question_id']= question_id
 
+    return post
