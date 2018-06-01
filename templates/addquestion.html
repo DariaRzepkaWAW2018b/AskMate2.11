@@ -4,12 +4,18 @@
 
 <h1>Welcome to Ask Mate</h1>
 <div class='area'>
-    <p>add question</p>
-    <form action='/single_question/<id>' method="POST">
-        <textarea minlenght='10' rows='5' cols='122' name="title" placeholder="Title...">{{name}}</textarea>
-        <textarea minlenght='10' rows='10' cols='122' name="question" placeholder="Your question here...">{{question}}</textarea>
-    <div><button type="submit" value="add">Add your question</button>
-    </form>
+    <p>add {{question_or_answer}}</p>
+    <form action='/add/<question>' method="POST">
+        <p>Title of question:</p>
+        <textarea minlenght='10' rows='5' cols='122' name="title" placeholder="Title...">
+            {{title}}
+        </textarea>
+        <p>Message:</p>
+        <textarea minlenght='10' rows='10' cols='122' name="question" placeholder="Your question here...">
+            {{message}}
+        </textarea>
+    <div><button type="submit" value="add">Add your {{question_or_answer}}</button>
+    </form> 
     <form action='/list' method="GET">
     <button>Back</button>
     </form>
