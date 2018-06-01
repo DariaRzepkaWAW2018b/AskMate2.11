@@ -1,5 +1,6 @@
 import persistence
 import itertools
+import time
 
 def find_by_id_q(id):
     list = persistence.import_data_from_file("sample_data/question.csv")
@@ -68,3 +69,17 @@ def create_dict(list_of_data):
     post=[]
     new_post = dict(itertools.zip_longest(header, list_of_data, fillvalue=None))
     return new_post
+ 
+ 
+def add_question(new_title, new_question):
+    post={}
+    header = persistence.import_headers_from_file('sample_data/question.csv')
+    for item in header:
+        post[item] = 0
+    post['title']= new_title
+    post[' message']= new_question
+    post ["submisson_time"] = time.ctime()
+    post ['id'] = create_new_id('q')
+    return post
+
+
