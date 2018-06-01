@@ -17,8 +17,8 @@ def import_data_from_file(file_name):
         csv_reader=csv.DictReader(csv_file)
 
         for row in csv_reader:
-            a = float(row[" submisson_time"])
-            row[" submisson_time"] = time.ctime(a)
+            a = float(row["submisson_time"])
+            row["submisson_time"] = time.ctime(a)
             list_of_dict.append(row)
         return list_of_dict
 
