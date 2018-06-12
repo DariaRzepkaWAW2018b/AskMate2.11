@@ -1,3 +1,4 @@
+"""
 import persistence
 import itertools
 import time
@@ -60,6 +61,8 @@ def create_new_id(qa, _question_id= None):
         for dict in data:
             if dict['question_id']== str(_question_id):
                 _id.append(dict['id'])
+            else:
+                new_id = 0
     new_id= int(max(_id))
     return new_id +1
 
@@ -82,7 +85,7 @@ def add_question(new_title, new_question):
     post ['id'] = create_new_id('q')
     return post
 
-def add_answer(question_id, new_title, new_answer):
+def add_answer(_question_id, new_title= None, new_answer):
     header = persistence.import_headers_from_file('sample_data/answer.csv')
     post= {}
     for item in header:
@@ -90,7 +93,10 @@ def add_answer(question_id, new_title, new_answer):
     post['title']= new_title
     post[' message']= new_answer
     post ["submisson_time"] = time.ctime()
-    post ['id'] = create_new_id('a', question_id)
-    post ['question_id']= question_id
+    post ['id'] = create_new_id('a', _question_id)
+    post ['question_id']= _question_id
+    export_data_to_file('sample_data/answer.csv', post)
 
-    return post
+print(add_answer(2,'tytul', 'wiadomosc'))
+
+"""
