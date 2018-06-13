@@ -1,14 +1,15 @@
 from flask import Flask, request, render_template
-import persistence
-import logic
+import database_common
+import database_manager
+
 
 app=Flask(__name__)
 
 @app.route("/")
 @app.route('/list', methods=["POST", "GET"])
 def index():
-    list_of_headers=persistence.import_headers_from_file("sample_data/question.csv")
-    list_of_dictionaries = persistence.import_data_from_file("sample_data/question.csv")
+    list_of_headers=['id', 'submission_time','view_number', 'vote_number','title','message','image']
+    list_of_dictionaries = database_manager.import_data_from_file()
     return render_template("list_of_question.html", list_of_dictionaries=list_of_dictionaries, list_of_headers=list_of_headers, id =id)
 
 @app.route("/addanswer", methods=["POST"])

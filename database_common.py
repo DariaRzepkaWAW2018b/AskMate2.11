@@ -5,10 +5,10 @@ import psycopg2.extras
 def get_connection_string():
     # setup connection string
     # to do this, please define these environment variables first
-    user_name = os.environ.get('codecooler', 'codecooler')
-    password = os.environ.get('123123', '123123')
-    host = os.environ.get('localhost', 'localhost')
-    database_name = os.environ.get('ask_mate_db', 'ask_mate_db')
+    user_name = os.environ.get('PSQL_USER_NAME')
+    password = os.environ.get('PSQL_PASSWORD')
+    host = os.environ.get('PSQL_HOST')
+    database_name = os.environ.get('PSQL_DB_NAME')
 
     env_variables_defined = user_name and password and host and database_name
 
@@ -33,6 +33,7 @@ def open_database():
         raise exception
     return connection
 
+print(get_connection_string())
 
 def connection_handler(function):
     def wrapper(*args, **kwargs):
