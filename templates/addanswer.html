@@ -36,6 +36,8 @@
         <div id='welcome'>Welcome to AskMate</div>
         <div id='paragraph'>Please fill the form</div>    
             <div class='area'>
+                    <p>Question</p>
+                    <p>{{ question }}</p>
                 <form action='/single_questions/<id>/' method="POST">
                 <textarea rows='10' cols='122' placeholder="Your answer here..."></textarea>
             </div>

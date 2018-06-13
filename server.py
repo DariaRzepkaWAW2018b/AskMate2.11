@@ -13,9 +13,7 @@ def index():
     list_of_dictionaries = database_manager.import_data_from_file()
     return render_template("list_of_question.html", list_of_dictionaries=list_of_dictionaries, list_of_headers=list_of_headers, id =id)
 
-@app.route("/addanswer", methods=["POST"])
-def addanswer():
-   return render_template("addanswer.html")
+
 
 @app.route("/addquestion", methods=['POST','GET'])
 def addquestion():
@@ -26,6 +24,20 @@ def addquestion():
 
 @app.route("/submitquestion", methods=['POST'])
 def submit_question():
+    new_title = request.form['title']
+    new_message = request.form['question']
+    database_manager.add_data(new_title, new_message)
+    return redirect('/')
+
+@app.route("/addanswer", methods=['POST','GET'])
+def addanswer):
+    if request.method == "POST":
+        return render_template('addanswer.html')
+    elif request.method == "GET":
+        return redirect('/')
+
+@app.route("/submitanswer", methods=['POST'])
+def submit_answer():
     new_title = request.form['title']
     new_message = request.form['question']
     database_manager.add_data(new_title, new_message)
