@@ -2,7 +2,7 @@
 
 {% block body %}
 <div>
-    <h1 align = "center">Welcome to Ask Mate</h1>
+    <h1>Welcome to Ask Mate</h1>
 
     <table border='4'>
         <div>
@@ -18,7 +18,7 @@
         </div>
 
         <div>
-            {% for dictionaries in list_of_dictionaries %} <tr>
+            {% for dictionaries in list_of_comment %} <tr>
                    
                 
                 {% for key in list_of_headers %}
@@ -39,29 +39,17 @@
                             <input type='submit' name = 'delete' value='Delete'>
                         </form>
                     </td> 
-                    <td>
-                        <form action="/question/{{id}}" method="POST">
-                            <input type='submit' name = 'view_answer' value='View Answer'> 
-                        </form>
-                    </td>
-                    <td>
-                        <form action="/comment" method="GET">
-                            <input type='submit' name = 'view_comment' value='View Comment'>
-                        </form>
-                    </td>
+                   
             
             {% endfor %}</tr>
                 
         </div>
     </table> <br>
     <div>
-        <label for="add">
-            Click for this button to add question
-        </label> <br>
-
-        <form action="/addquestion" method="POST">
-            <input type='submit' name='add_question' value='Add Question'>
-        </form>
+        <form action="/add_comment" method = "GET">
+            <input type ="submit" name = "Add_Comment" value = "Add Comment"> 
+            </input>
+        </form> <br>
     </div>
 
  
