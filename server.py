@@ -1,6 +1,7 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 import database_common
 import database_manager
+
 
 
 app=Flask(__name__)
@@ -22,6 +23,13 @@ def addquestion():
         return render_template('addquestion.html')
     elif request.method == "GET":
         return redirect('/')
+
+@app.route("/submitquestion", methods=['POST'])
+def submit_question():
+    new_title = request.form['title']
+    new_message = request.form['question']
+    database_manager.add_data(new_title, new_message)
+    return redirect('/')
 
 @app.route("/question/<int:id>", methods=["POST","GET"])
 @app.route("/question/<int:id>/<slug>", methods=["POST","GET"])
