@@ -1,6 +1,6 @@
-export PSQL_USER_NAME=postgres
-export PSQL_PASSWORD=Sveta1983
+export PSQL_USER_NAME=pie
+export PSQL_PASSWORD=placek
 export PSQL_HOST=localhost
-export PSQL_DB_NAME=ask_mate_db2
+export PSQL_DB_NAME=postgres
 
 python server.py

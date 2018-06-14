@@ -9,10 +9,9 @@ app=Flask(__name__)
 @app.route("/")
 @app.route('/list', methods=["POST", "GET"])
 def index():
-    # db_table = "question"
     list_of_headers=['id', 'submission_time','view_number', 'vote_number','title','message','image']
     list_of_dictionaries = database_manager.import_data_from_file_question()
-    return render_template("list_of_question.html", list_of_dictionaries=list_of_dictionaries, list_of_headers=list_of_headers, id = id)
+    return render_template("list_of_question.html", list_of_dictionaries=list_of_dictionaries, list_of_headers=list_of_headers, id =id)
 
 @app.route("/addquestion", methods=['POST','GET'])
 def addquestion():
@@ -103,6 +102,11 @@ def delete_question(question_id):
 @app.route("/answer/<answer_id>/delete", methods=['GET', 'POST'])
 def delete_answer(answer_id):
     return redirect('/')
+
+
+@app.route("/add_answer_comment/<answer_id>", methods=['GET', 'POST'])
+def add_comment_answer():
+    return
 
 
 if __name__ == "__main__":
