@@ -25,6 +25,12 @@ def import_data_from_file_answer(cursor, id_q):
     return list_of_dict
 
 @database_common.connection_handler
+def import_title_by_id(cursor, id_q):
+    cursor.execute("SELECT title FROM question WHERE id = (%s)", (id_q,))
+    list_of_title = cursor.fetchall()
+    return list_of_title[0]
+
+@database_common.connection_handler
 def add_data_answer(cursor, new_message):
     cursor.execute("INSERT into answer (message) VALUES (%s)", (new_message,))
     print("1")
