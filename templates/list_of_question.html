@@ -35,13 +35,14 @@
                 
                         
                     <td>
-                        <form action="/do_delete/{{id}}" method="POST">
+                        <form action="/delete_question" method="POST">
                             <input type='submit' name = 'delete' value='Delete'>
                         </form>
                     </td> 
                     <td>
                         <form action="/list_of_answer" method="POST">
-                            <input type='submit' name = 'view_answer' value='View Answer'> 
+                            <input type='hidden' name = 'question_id' value={{id}}>
+                            <input type='submit' name = 'view' value='View Answer'> 
                         </form>
                     </td>
                     <td>
