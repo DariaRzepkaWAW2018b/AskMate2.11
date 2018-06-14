@@ -40,10 +40,7 @@
                             <input type='submit' name = 'delete' value='Delete'>
                         </form>
                     </td> 
-                    <td>
-                        <form action="/add_comment" method="POST">
-                            <input type='submit' name = 'Add_Comment' value='Add Answer'>
-                        </form>
+
                     </td> 
             </tr>
             {% endfor %}
@@ -55,7 +52,7 @@
                 Click for this button to add answer
             </label> <br>
     
-            <form action="/addquestion" method="POST">
+            <form action="/addanswer" method="GET">
                 <input type='submit' name='Add_answer' value='Add Answer'>
             </form>
         </div>

@@ -14,10 +14,6 @@ def index():
     list_of_dictionaries = database_manager.import_data_from_file_question()
     return render_template("list_of_question.html", list_of_dictionaries=list_of_dictionaries, list_of_headers=list_of_headers, id = id)
 
-@app.route("/addanswer", methods=["POST"])
-def addanswer():
-   return render_template("addanswer.html")
-
 @app.route("/addquestion", methods=['POST','GET'])
 def addquestion():
     if request.method == "POST":
@@ -29,16 +25,36 @@ def addquestion():
 def submit_question():
     new_title = request.form['title']
     new_message = request.form['question']
-    database_manager.add_data(new_title, new_message)
+    database_manager.add_data_question(new_title, new_message)
     return redirect('/')
 
-@app.route("/question/<int:id>", methods=["POST"])
-@app.route("/question/<int:id>/<slug>", methods=["POST"])
-def question(id, slug=None):
-    id = id
-    list_of_headers=['id', 'submission_time','view_number', 'vote_number','question_id','message','image']
+
+@app.route("/list_of_answer",methods=["POST","GET"])
+def list_of_answers():
+    list_of_headers=['id', 'question_id', 'message', 'image','submission_time','vote_number']
     list_of_answer = database_manager.import_data_from_file_answer()
-    return render_template("list_of_answer.html",list_of_answer = list_of_answer,list_of_headers=list_of_headers, id = id)
+    return render_template("list_of_answer.html", list_of_headers = list_of_headers, list_of_answer = list_of_answer)
+
+@app.route("/addanswer", methods=["GET"])
+def addanswer():
+   return render_template("addanswer.html")
+
+@app.route("/submitanswer", methods=['POST'])
+def submit_answer():
+    new_message = request.form['message']
+    print(new_message)
+    database_manager.add_data_answer(new_message)
+    return redirect('/list_of_answer')
+
+
+
+# @app.route("/question/<int:id>", methods=["POST"])
+# @app.route("/question/<int:id>/<slug>", methods=["POST"])
+# def question(id, slug=None):
+#     id = id
+#     list_of_headers=['id', 'submission_time','view_number', 'vote_number','question_id','message','image']
+#     list_of_answer = database_manager.import_data_from_file_answer()
+#     return render_template("list_of_answer.html",list_of_answer = list_of_answer,list_of_headers=list_of_headers, id = id)
 
 
 
@@ -58,7 +74,7 @@ def add_comment_template():
 @app.route("/submit_comment", methods = ["POST"])
 def add_comment():
     new_message = request.form['comment']
-    database_manager.add_comment(new_message)
+    database_manager.add_data_comment(new_message)
     return redirect("/comment")
 
 
