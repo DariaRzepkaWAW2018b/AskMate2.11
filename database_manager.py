@@ -19,8 +19,8 @@ def add_data_question(cursor, new_title, new_message, new_image=None):
 #queti$
 
 @database_common.connection_handler
-def import_data_from_file_answer(cursor):
-    cursor.execute("SELECT * FROM answer")
+def import_data_from_file_answer(cursor, id_q):
+    cursor.execute("SELECT * FROM answer WHERE question_id = (%s)", (id_q,))
     list_of_dict = cursor.fetchall()
     return list_of_dict
 
