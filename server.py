@@ -32,8 +32,11 @@ def submit_question():
 def list_of_answers():
     list_of_headers=['id', 'question_id', 'message', 'image']
     id_q=request.form['question_id']
+    dict_title_q=database_manager.import_title_by_id(id_q)
+    title_q = dict_title_q['title']
     list_of_answer = database_manager.import_data_from_file_answer(id_q)
-    return render_template("list_of_answer.html", list_of_headers = list_of_headers, list_of_answer = list_of_answer)
+    return render_template("list_of_answer.html", list_of_headers = list_of_headers, 
+    list_of_answer = list_of_answer, title_q = title_q)
 
 @app.route("/addanswer", methods=["GET"])
 def addanswer():
