@@ -59,7 +59,6 @@ def question(id, slug=None):
 
 
 
-
 @app.route("/comment",methods=["GET","POST"])
 # @app.route("/comment")
 def comment():
@@ -77,6 +76,11 @@ def add_comment():
     new_message = request.form['comment']
     database_manager.add_comment(new_message)
     return redirect("/comment")
+
+
+
+
+    tuuuuu
 
 
 
