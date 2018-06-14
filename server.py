@@ -30,7 +30,7 @@ def submit_question():
     return redirect('/')
 
 @app.route("/addanswer", methods=['POST','GET'])
-def addanswer):
+def addanswer():
     if request.method == "POST":
         return render_template('addanswer.html')
     elif request.method == "GET":
@@ -47,19 +47,19 @@ def submit_answer():
 @app.route("/question/<int:id>/<slug>", methods=["POST","GET"])
 def question(id, slug=None):
     id = str(id)
-    title_q = logic.find_by_id_q(id)
-    list_of_dictionaries = logic.find_by_id_a(id)
-    list_of_answer_headers = persistence.import_headers_from_file("sample_data/answer.csv")
+    # title_q = logic.find_by_id_q(id)
+    # list_of_dictionaries = logic.find_by_id_a(id)
+    # list_of_answer_headers = persistence.import_headers_from_file("sample_data/answer.csv")
     return render_template("single_question.html", title_q = title_q, list_of_dictionaries = list_of_dictionaries, list_of_answer_headers=list_of_answer_headers)
 
 @app.route("/question/<question_id>/delete", methods=['GET', 'POST'])
 def delete_question(question_id):
-    logic.delete_by_id("q", question_id)
+    # logic.delete_by_id("q", question_id)
     return redirect('/')
 
 @app.route("/answer/<answer_id>/delete", methods=['GET', 'POST'])
 def delete_answer(answer_id):
-    logic.delete_by_id("a", question_id)
+    # logic.delete_by_id("a", question_id)
     return redirect('/')
 
 
