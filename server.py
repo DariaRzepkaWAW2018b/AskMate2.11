@@ -14,9 +14,7 @@ def index():
     list_of_dictionaries = database_manager.import_data_from_file_question()
     return render_template("list_of_question.html", list_of_dictionaries=list_of_dictionaries, list_of_headers=list_of_headers, id = id)
 
-@app.route("/addanswer", methods=["POST"])
-def addanswer():
-   return render_template("addanswer.html")
+
 
 @app.route("/addquestion", methods=['POST','GET'])
 def addquestion():
@@ -32,8 +30,27 @@ def submit_question():
     database_manager.add_data(new_title, new_message)
     return redirect('/')
 
+<<<<<<< HEAD
 @app.route("/question/<int:id>", methods=["POST"])
 @app.route("/question/<int:id>/<slug>", methods=["POST"])
+=======
+@app.route("/addanswer", methods=['POST','GET'])
+def addanswer):
+    if request.method == "POST":
+        return render_template('addanswer.html')
+    elif request.method == "GET":
+        return redirect('/')
+
+@app.route("/submitanswer", methods=['POST'])
+def submit_answer():
+    new_title = request.form['title']
+    new_message = request.form['question']
+    database_manager.add_data(new_title, new_message)
+    return redirect('/')
+
+@app.route("/question/<int:id>", methods=["POST","GET"])
+@app.route("/question/<int:id>/<slug>", methods=["POST","GET"])
+>>>>>>> aee81ef8b7ae7ba7f95b049f843406ddee144812
 def question(id, slug=None):
     id = id
     list_of_headers=['id', 'submission_time','view_number', 'vote_number','question_id','message','image']
