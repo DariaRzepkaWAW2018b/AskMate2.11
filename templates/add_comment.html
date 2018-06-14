@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h1>Welcome to Ask Mate</h1>
+<div class='area'>
+    <form action="/submit_comment" method="POST">
+        <p>Message:</p>
+        <textarea minlenght='10' rows='10' cols='122' value ="comment" name="comment" placeholder="Your question here...">
+            {{comment}}
+        </textarea>
+    <div><button type="submit" value="add">Add comment</button>
+    </form>
+    <form action='/list' method="GET">
+    <button>Back</button>
+    </form>
+    </div>
+</div>   
+{% endblock %} 

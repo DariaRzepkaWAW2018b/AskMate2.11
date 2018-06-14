@@ -9,9 +9,10 @@ app=Flask(__name__)
 @app.route("/")
 @app.route('/list', methods=["POST", "GET"])
 def index():
+    # db_table = "question"
     list_of_headers=['id', 'submission_time','view_number', 'vote_number','title','message','image']
-    list_of_dictionaries = database_manager.import_data_from_file()
-    return render_template("list_of_question.html", list_of_dictionaries=list_of_dictionaries, list_of_headers=list_of_headers, id =id)
+    list_of_dictionaries = database_manager.import_data_from_file_question()
+    return render_template("list_of_question.html", list_of_dictionaries=list_of_dictionaries, list_of_headers=list_of_headers, id = id)
 
 
 
@@ -29,6 +30,10 @@ def submit_question():
     database_manager.add_data(new_title, new_message)
     return redirect('/')
 
+<<<<<<< HEAD
+@app.route("/question/<int:id>", methods=["POST"])
+@app.route("/question/<int:id>/<slug>", methods=["POST"])
+=======
 @app.route("/addanswer", methods=['POST','GET'])
 def addanswer():
     if request.method == "POST":
@@ -45,7 +50,9 @@ def submit_answer():
 
 @app.route("/question/<int:id>", methods=["POST","GET"])
 @app.route("/question/<int:id>/<slug>", methods=["POST","GET"])
+>>>>>>> aee81ef8b7ae7ba7f95b049f843406ddee144812
 def question(id, slug=None):
+<<<<<<< HEAD
     id = str(id)
     # title_q = logic.find_by_id_q(id)
     # list_of_dictionaries = logic.find_by_id_a(id)
@@ -55,11 +62,66 @@ def question(id, slug=None):
 @app.route("/question/<question_id>/delete", methods=['GET', 'POST'])
 def delete_question(question_id):
     # logic.delete_by_id("q", question_id)
+=======
+    id = id
+    list_of_headers=['id', 'submission_time','view_number', 'vote_number','question_id','message','image']
+    list_of_answer = database_manager.import_data_from_file_answer()
+    return render_template("list_of_answer.html",list_of_answer = list_of_answer,list_of_headers=list_of_headers, id = id)
+
+
+
+@app.route("/comment",methods=["GET","POST"])
+# @app.route("/comment")
+def comment():
+    list_of_headers=['id', 'question_id','answer_id', 'message','submission_time','edited_counted']
+    list_of_comment = database_manager.import_data_from_file_comment()
+    return render_template("list_of_comments.html", list_of_headers = list_of_headers, list_of_comment = list_of_comment)
+
+
+@app.route("/add_comment", methods = ["GET"])
+def add_comment_template():
+    return render_template("/add_comment.html")
+
+@app.route("/submit_comment", methods = ["POST"])
+def add_comment():
+    new_message = request.form['comment']
+    database_manager.add_comment(new_message)
+    return redirect("/comment")
+
+
+
+
+    tuuuuu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@app.route("/question/<question_id>/delete", methods=['GET', 'POST'])
+def delete_question(question_id):
+>>>>>>> d443fb970792d9aa2e95ae22a657442db051a13c
     return redirect('/')
 
 @app.route("/answer/<answer_id>/delete", methods=['GET', 'POST'])
 def delete_answer(answer_id):
+<<<<<<< HEAD
     # logic.delete_by_id("a", question_id)
+=======
+>>>>>>> d443fb970792d9aa2e95ae22a657442db051a13c
     return redirect('/')
 
 
