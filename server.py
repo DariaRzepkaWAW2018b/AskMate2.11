@@ -31,8 +31,9 @@ def submit_question():
 
 @app.route("/list_of_answer",methods=["POST","GET"])
 def list_of_answers():
-    list_of_headers=['id', 'question_id', 'message', 'image','submission_time','vote_number']
-    list_of_answer = database_manager.import_data_from_file_answer()
+    list_of_headers=['id', 'question_id', 'message', 'image']
+    id_q=request.form['question_id']
+    list_of_answer = database_manager.import_data_from_file_answer(id_q)
     return render_template("list_of_answer.html", list_of_headers = list_of_headers, list_of_answer = list_of_answer)
 
 @app.route("/addanswer", methods=["GET"])
