@@ -10,7 +10,7 @@ app=Flask(__name__)
 @app.route('/list', methods=["POST", "GET"])
 def index():
     list_of_headers=['id', 'submission_time','view_number', 'vote_number','title','message','image']
-    list_of_dictionaries = database_manager.import_data_from_file()
+    list_of_dictionaries = database_manager.import_data_from_file_question()
     return render_template("list_of_question.html", list_of_dictionaries=list_of_dictionaries, list_of_headers=list_of_headers, id =id)
 
 @app.route("/addquestion", methods=['POST','GET'])
